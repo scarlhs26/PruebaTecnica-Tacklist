@@ -1,0 +1,139 @@
+/*------------------Estilos Generales------------*/
+.li-press{
+    background-color: rgb(187, 52, 52);
+}
+
+/*-----------CHECKLIST-----------------*/
+/* src/styles/Generales.css */
+.checklist {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.checklist h1 {
+    text-align: center;
+}
+
+.checklist .input-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.checklist input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.checklist input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.checklist button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checklist button:hover {
+    background-color: #0056b3;
+}
+
+.checklist ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.checklist li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.checklist li:hover {
+    background-color: #e9ecef;
+    transform: scale(1.02);
+}
+
+.checklist li.completed {
+    text-decoration: line-through;
+    color: #aaa;
+}
+
+.checklist input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checklist .delete-button {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.checklist .delete-button:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+/* Animación de entrada y salida para las tareas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+.task-enter {
+    animation: fadeIn 0.3s ease;
+}
+
+.task-leave {
+    animation: fadeOut 0.3s ease;
+}
+
+/* Estilo para la entrada de edición */
+.edit-task-input {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
