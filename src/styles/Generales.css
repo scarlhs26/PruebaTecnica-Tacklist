@@ -137,3 +137,17 @@
     border-radius: 4px;
     margin-right: 10px;
 }
+/*modo oscuro*/
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  body.dark-mode .checklist {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  /* Otros estilos para el modo oscuro según tus componentes */
+  

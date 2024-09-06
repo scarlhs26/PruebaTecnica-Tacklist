@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-// Importación alternativa para bcryptjs
+import { v4 as uuidv4 } from 'uuid'; // Importar uuid para generar IDs únicos
 import * as bcrypt from 'bcryptjs';
-
 import { Navbar } from '../components/Navbar';
 
 export function Register() {
@@ -29,17 +28,13 @@ export function Register() {
 
     if (!validateEmail(email)) {
       setError('El correo electrónico no es válido');
-      setTimeout(() => {
-        setError(null);
-      }, 5000);
+      setTimeout(() => setError(null), 5000);
       return;
     }
 
     if (!validatePassword(password)) {
       setError('La contraseña debe tener al menos 6 caracteres');
-      setTimeout(() => {
-        setError(null);
-      }, 5000);
+      setTimeout(() => setError(null), 5000);
       return;
     }
 
@@ -50,39 +45,39 @@ export function Register() {
 
     if (userExists) {
       setError('El usuario con este correo electrónico ya existe');
-      setTimeout(() => {
-        setError(null);
-      }, 5000);
+      setTimeout(() => setError(null), 5000);
       return;
     }
 
     try {
+      // Generar un ID único para el nuevo usuario
+      const id = uuidv4();
+
       // Encriptar la contraseña usando bcryptjs
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      const newUser = { email, username, password: hashedPassword };
-      
+      const newUser = { id, email, username, password: hashedPassword };
+
       // Guardar el nuevo usuario en el localStorage
       usersList.push(newUser);
       localStorage.setItem('users', JSON.stringify(usersList));
+
+      // Guardar el usuario actual en localStorage
+      localStorage.setItem('loggedInUser', JSON.stringify({ email, username }));
 
       // Limpiar formulario
       setEmail('');
       setUsername('');
       setPassword('');
-      setSuccessMessage('Usuario registrado exitosamente');
+      setSuccessMessage(`Usuario ${username} registrado exitosamente`);
 
       // Limpiar mensaje de éxito después de 5 segundos
-      setTimeout(() => {
-        setSuccessMessage(null);
-      }, 5000);
+      setTimeout(() => setSuccessMessage(null), 5000);
     } catch (error) {
       setError('Error al registrar el usuario. Inténtalo de nuevo.');
 
       // Limpiar mensaje de error después de 5 segundos
-      setTimeout(() => {
-        setError(null);
-      }, 5000);
+      setTimeout(() => setError(null), 5000);
     }
   };
 

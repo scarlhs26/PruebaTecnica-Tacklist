@@ -1,7 +1,5 @@
-// src/components/LogoutButton.tsx
-
 import React from 'react';
-import { useNavigate } from 'react-router-dom';  // Para redirección
+import { useNavigate } from 'react-router-dom'; 
 
 export function LogoutButton() {
   const navigate = useNavigate();
@@ -9,9 +7,10 @@ export function LogoutButton() {
   const handleLogout = () => {
     // Eliminar el token del localStorage
     localStorage.removeItem('authToken');
+    localStorage.removeItem('loggedInUser');
     
     // Redirigir al usuario a la página de inicio de sesión
-    navigate('/login');  // Cambia '/login' a la ruta de tu página de inicio de sesión
+    navigate('/login'); 
   };
 
   return (

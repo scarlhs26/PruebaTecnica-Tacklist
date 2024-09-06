@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
+import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import '../styles/Generales.css';
 
@@ -6,6 +6,7 @@ interface Task {
   id: number;
   text: string;
   completed: boolean;
+  userid: string;
 }
 
 interface DraggableTaskProps {
@@ -33,7 +34,7 @@ const DraggableTask: React.FC<DraggableTaskProps> = ({
   saveEdit,
   deleteTask,
   editTaskId,
-  editTaskText
+  editTaskText,
 }) => {
   const [{ isDragging }, dragRef] = useDrag({
     type: ItemType,
@@ -94,25 +95,51 @@ export function Checklist() {
   const [editTaskId, setEditTaskId] = useState<number | null>(null);
   const [editTaskText, setEditTaskText] = useState<string>('');
 
+  // Obtener el correo electrónico del usuario logueado desde localStorage
+  const loggedInUserEmail = localStorage.getItem('loggedInUser');
+
+  // Cargar las tareas del usuario logueado al montar el componente
+  useEffect(() => {
+    if (loggedInUserEmail) {
+      const storedTasks = localStorage.getItem(`tasks_${loggedInUserEmail}`);
+      if (storedTasks) {
+        setTasks(JSON.parse(storedTasks));
+      }
+    }
+  }, [loggedInUserEmail]);
+
+  // Guardar las tareas del usuario logueado en localStorage cada vez que cambien
+  useEffect(() => {
+    if (loggedInUserEmail && tasks.length > 0) {
+      localStorage.setItem(`tasks_${loggedInUserEmail}`, JSON.stringify(tasks));
+    }
+  }, [tasks, loggedInUserEmail]);
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTask(e.target.value);
   };
 
   const addTask = () => {
-    if (newTask.trim()) {
-      setTasks([...tasks, {
-        id: Date.now(),
-        text: newTask,
-        completed: false
-      }]);
+    if (newTask.trim() && loggedInUserEmail) {
+      setTasks([
+        ...tasks,
+        {
+          id: Date.now(),
+          text: newTask,
+          completed: false,
+          userid: loggedInUserEmail, // Asignar el correo del usuario logueado como identificador
+        },
+      ]);
       setNewTask('');
     }
   };
 
   const toggleTaskCompletion = (id: number) => {
-    setTasks(tasks.map(task =>
-      task.id === id ? { ...task, completed: !task.completed } : task
-    ));
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -138,16 +165,18 @@ export function Checklist() {
 
   const saveEdit = () => {
     if (editTaskId !== null) {
-      setTasks(tasks.map(task =>
-        task.id === editTaskId ? { ...task, text: editTaskText } : task
-      ));
+      setTasks(
+        tasks.map((task) =>
+          task.id === editTaskId ? { ...task, text: editTaskText } : task
+        )
+      );
       setEditTaskId(null);
       setEditTaskText('');
     }
   };
 
   const deleteTask = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   const moveTask = (dragIndex: number, hoverIndex: number) => {
@@ -197,4 +226,3 @@ export function Checklist() {
     </div>
   );
 }
-
