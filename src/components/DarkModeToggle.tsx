@@ -1,29 +1,51 @@
-// src/components/DarkModeToggle.tsx
 import React, { useState, useEffect } from 'react';
 
+// Obtén el ID del usuario desde el localStorage o cualquier otro método de autenticación
+const getUserId = (): string | null => {
+  return localStorage.getItem('loggedInUser'); // Asegúrate de que este método obtenga el ID del usuario
+};
+
 const DarkModeToggle: React.FC = () => {
+  const userId = getUserId();
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    // Recuperar el estado del modo oscuro del localStorage si existe
-    const savedMode = localStorage.getItem('darkMode');
-    return savedMode === 'true';
+    if (userId) {
+      // Recuperar el estado del modo oscuro del localStorage si existe
+      const savedMode = localStorage.getItem(`darkMode_${userId}`);
+      return savedMode === 'true';
+    }
+    return false;
   });
 
   useEffect(() => {
-    // Aplicar el modo oscuro o claro según el estado
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
+    if (userId) {
+      // Seleccionar la sección 'cuerpo'
+      const cuerpoElement = document.querySelector('.cuerpo');
+      if (cuerpoElement) {
+        // Aplicar o quitar la clase dark-mode
+        if (isDarkMode) {
+          cuerpoElement.classList.add('dark-mode');
+        } else {
+          cuerpoElement.classList.remove('dark-mode');
+        }
+      }
+      // Guardar el estado del modo oscuro en localStorage
+      localStorage.setItem(`darkMode_${userId}`, JSON.stringify(isDarkMode));
     }
-    // Guardar el estado del modo oscuro en localStorage
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
+  }, [isDarkMode, userId]);
 
   return (
-    <button onClick={() => setIsDarkMode(prevMode => !prevMode)}>
-      {isDarkMode ? 'Modo Claro' : 'Modo Oscuro'}
+    <button
+      onClick={() => setIsDarkMode(prevMode => !prevMode)}
+      className="mode-toggle-button"
+    >
+      {isDarkMode ? (
+        <i className="lnir-sun text-3xl"></i>  // Ícono para modo claro
+      ) : (
+        <i className="lnir-moon text-3xl"></i>  // Ícono para modo oscuro
+      )}
     </button>
   );
 };
 
 export default DarkModeToggle;
+

@@ -61,6 +61,7 @@ const DraggableTask: React.FC<DraggableTaskProps> = ({
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
       <input
+      className='checkbox'
         type="checkbox"
         checked={task.completed}
         onChange={() => toggleTaskCompletion(task.id)}
@@ -80,10 +81,12 @@ const DraggableTask: React.FC<DraggableTaskProps> = ({
           className="edit-task-input"
         />
       ) : (
-        <span onClick={() => handleTaskClick(task)}>{task.text}</span>
+        <span className="task-text" onClick={() => handleTaskClick(task)}>
+          {task.text}
+        </span>
       )}
       <button onClick={() => deleteTask(task.id)} className="delete-button">
-        Eliminar
+        <i className='lnir-trash-can'></i>
       </button>
     </li>
   );
@@ -127,7 +130,7 @@ export function Checklist() {
           id: Date.now(),
           text: newTask,
           completed: false,
-          userid: loggedInUserEmail, // Asignar el correo del usuario logueado como identificador
+          userid: loggedInUserEmail, 
         },
       ]);
       setNewTask('');
@@ -187,13 +190,18 @@ export function Checklist() {
   };
 
   const handleClearAllTasks = () => {
-    setTasks([]);
+    if (loggedInUserEmail) {
+      // Vaciar la lista en el localStorage para el usuario actual
+      localStorage.removeItem(`tasks_${loggedInUserEmail}`);
+      // Vaciar las tareas en el estado local
+      setTasks([]);
+    }
   };
 
   return (
     <div className="checklist">
-      <h1>Mi Checklist</h1>
-      <div className="input-container">
+      <h1 className='font-semibold text-sm mb-4 mt-2'>Vamos a cumplir tus metas:</h1>
+      <div className="input-container relative">
         <input
           type="text"
           value={newTask}
@@ -201,10 +209,10 @@ export function Checklist() {
           onKeyDown={handleKeyPress}
           placeholder="Añadir nueva tarea"
         />
-        <button onClick={addTask}>Añadir</button>
+          <li onClick={addTask} className='lnir-plus absolute  right-[10px]  top-[7px]	text-[#051d05]  plus  '></li>
       </div>
       <button onClick={handleClearAllTasks} className="clear-button">
-        Vaciar Lista
+      <i className='lnir-trash-can mb-2 text-lg	'></i>
       </button>
       <ul>
         {tasks.map((task, index) => (

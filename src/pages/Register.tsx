@@ -119,6 +119,7 @@ export function Register() {
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         <button type="submit">Registrar</button>
+        <p>¿Ya tienes una cuenta? <a href="/">Inicia Sesion</a></p>
       </form>
     </>
   );

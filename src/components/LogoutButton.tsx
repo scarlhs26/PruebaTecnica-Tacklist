@@ -15,7 +15,7 @@ export function LogoutButton() {
 
   return (
     <button onClick={handleLogout}>
-      Cerrar Sesión
+      <li className='lnir-power-switch text-3xl	'></li>
     </button>
   );
 }

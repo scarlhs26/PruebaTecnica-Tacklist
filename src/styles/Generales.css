@@ -1,3 +1,15 @@
+@import url('../assets/LineIcons/Pro-Regular/font-css/LineIcons.css');
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: url('./assets/fonts/NunitoSans-VariableFont_YTLC.ttf') format('truetype');
+    font-weight: 100 900; 
+    font-style: normal;
+    font-optical-sizing: auto; 
+  }
+  *{
+    font-family: 'Nunito Sans', sans-serif;
+  }
 /*------------------Estilos Generales------------*/
 .li-press{
     background-color: rgb(187, 52, 52);
@@ -5,11 +17,19 @@
 
 /*-----------CHECKLIST-----------------*/
 /* src/styles/Generales.css */
+/* Estilos generales para la lista de tareas */
 .checklist {
-    max-width: 600px;
+    min-height: 400px;
+    min-width: 400px;
     margin: auto;
-    padding: 20px;
+    padding-left: 50px;
+    margin-top: 30px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #8ea8a6;
     font-family: Arial, sans-serif;
+    border-radius: 30px;
 }
 
 .checklist h1 {
@@ -25,30 +45,15 @@
     flex: 1;
     padding: 8px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #cfcece;
     border-radius: 4px;
+    width: 100%;
     transition: border-color 0.3s ease;
 }
 
 .checklist input[type="text"]:focus {
-    border-color: #007bff;
+    border-color: #ffffff;
     outline: none;
-}
-
-.checklist button {
-    padding: 8px 16px;
-    margin-left: 10px;
-    font-size: 16px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.checklist button:hover {
-    background-color: #0056b3;
 }
 
 .checklist ul {
@@ -57,31 +62,55 @@
     margin: 0;
 }
 
+.plus {
+    font-size: 12px;
+    padding: 8px !important;
+    border-radius: 50%;
+    font-weight: bold;
+    background-color: #D5E4E1 !important;
+    cursor: pointer;
+}
+.plus:hover {
+    background-color: #abb6b4 !important;
+
+
+}
+.chekbox{
+    border-radius: 50%;
+}
+
+
+
+/* Estilos para cada tarea */
 .checklist li {
     display: flex;
     align-items: center;
-    padding: 10px;
+    padding: 18px;
     border-bottom: 1px solid #ddd;
     background-color: #f9f9f9;
     margin-bottom: 5px;
-    border-radius: 4px;
+    border-radius: 12px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover sobre cada tarea */
 .checklist li:hover {
     background-color: #e9ecef;
     transform: scale(1.02);
 }
 
-.checklist li.completed {
+/* Estilo para el texto de la tarea */
+.checklist .task-text {
+    flex: 1;
+}
+
+/* Estilo para la tarea completada */
+.checklist li.completed .task-text {
     text-decoration: line-through;
     color: #aaa;
 }
 
-.checklist input[type="checkbox"] {
-    margin-right: 10px;
-}
-
+/* Estilo para el botón de eliminar */
 .checklist .delete-button {
     margin-left: auto;
     background: none;
@@ -92,10 +121,12 @@
     transition: color 0.3s ease;
 }
 
+/* Hover sobre el botón de eliminar */
 .checklist .delete-button:hover {
     color: darkred;
     text-decoration: underline;
 }
+
 
 /* Animación de entrada y salida para las tareas */
 @keyframes fadeIn {
@@ -130,24 +161,37 @@
 
 /* Estilo para la entrada de edición */
 .edit-task-input {
-    flex: 1;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
+    flex: none !important;
+    padding: 0px !important;
+    border: none !important;
+    margin-right: 0px !important;
+    width: 80% !important;
+    background-color:#f9f9f9;
+
+}
+.edit-task-input:focus {
+    border-color: #E9ECEF !important;
+    background-color:#E9ECEF; 
+    outline: none !important;
 }
 /*modo oscuro*/
 
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+/* Estilos por defecto para la sección 'cuerpo' */
+.cuerpo {
+    background-color: #D5E4E1; 
+    color: #000000; 
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
   }
   
-  body.dark-mode .checklist {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
+  /* Estilos para el modo oscuro en la sección 'cuerpo' */
+  .cuerpo.dark-mode {
+    background-color: #061312; /* Color de fondo oscuro */
+    color: #ffffff; /* Color de texto oscuro */
   }
   
-  /* Otros estilos para el modo oscuro según tus componentes */
+  /* Estilos adicionales para otros elementos dentro de la sección 'cuerpo' */
+  .cuerpo.dark-mode .checklist {
+    background-color: #103a36; 
+    color: #e0e0e0; 
+  }
   
