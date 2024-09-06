@@ -71,7 +71,7 @@ export function Inicio() {
   return (
     <>
       <Navbar />
-      <h1>Inicio</h1>
+      <h1>Inicioo</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="email">Correo Electrónico:</label>
