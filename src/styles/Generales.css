@@ -153,6 +153,9 @@
 .task-leave {
     animation: fadeOut 0.3s ease;
 }
+.task-text{
+    color: #5f5e5e;
+  }
 
 /* Estilo para la entrada de edición */
 .edit-task-input {
@@ -188,5 +191,12 @@
   .cuerpo.dark-mode .checklist {
     background-color: #103a36; 
     color: #e0e0e0; 
+  }
+
+  .cuerpo.dark-mode .checklist .task-text{
+    color: #5f5e5e;
+  }
+  .cuerpo.dark-mode .checklist .edit-task-input{
+    color: #5f5e5e;
   }
   

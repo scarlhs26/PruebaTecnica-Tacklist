@@ -50,7 +50,7 @@ export function ChecklistPage() {
           <DarkModeToggle />
         </nav>
         <div className="flex flex-col items-center">
-          <div className="w-2/5">
+          <div className=" px-2 md:w-1/2">
             <h1 className="text-3xl font-bold mb-4">Hola, {username}</h1>
             <p className="font-thin text-xs">Frase del día:</p>
             {loading ? (
