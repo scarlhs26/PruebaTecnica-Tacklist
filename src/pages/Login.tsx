@@ -100,6 +100,7 @@ export function Inicio() {
               Iniciar Sesión
             </button>
             <div className=" mt-2 w-60 text-center		text-[12px]	h-12">{error && <p style={{ color: "red" }}>{error}</p>}</div>
+            <div className="mt-2 w-60 text-center	h-12">{successMessage && <p style={{ color: "green" }}>{successMessage}</p>}</div>
             <p>
               ¿Aún no tienes una cuenta? <a className="font-bold	" href="/register">Regístrate</a>
             </p>

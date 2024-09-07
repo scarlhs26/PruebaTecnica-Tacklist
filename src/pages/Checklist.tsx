@@ -1,5 +1,5 @@
 // src/pages/ChecklistPage.tsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Checklist } from "../components/Check";
@@ -13,8 +13,7 @@ export function ChecklistPage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Obtener el token del localStorage
-  const token = localStorage.getItem("authToken");
+
 
   // Obtener el usuario logueado y mostrar su nombre
   const loggedInUserEmail = localStorage.getItem("loggedInUser");

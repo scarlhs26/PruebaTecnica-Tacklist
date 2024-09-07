@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Importar uuid para generar IDs únicos
 import * as bcrypt from 'bcryptjs';
-import { Navbar } from '../components/Navbar';
 import Captus from '../img/captus.png';
 
 
