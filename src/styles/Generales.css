@@ -19,7 +19,6 @@ body{
 }
 
 /*-----------CHECKLIST-----------------*/
-/* src/styles/Generales.css */
 /* Estilos generales para la lista de tareas */
 .checklist {
     min-height: 400px;
@@ -148,6 +147,14 @@ body{
         transform: translateY(10px);
     }
 }
+@media (max-width: 380px){
+    .checklist{
+        min-width: 360px;
+    }
+    .captusseccion {
+        margin-left: 4rem !important;
+    }
+}
 
 .task-enter {
     animation: fadeIn 0.3s ease;
@@ -176,32 +183,40 @@ body{
     outline: none !important;
 }
 /*modo oscuro*/
-
-/* Estilos por defecto para la sección 'cuerpo' */
 .cuerpo {
     background-color: #D5E4E1; 
     color: #000000; 
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    min-height: 100vh;
+    margin: 0; 
   }
   
-  /* Estilos para el modo oscuro en la sección 'cuerpo' */
+
   .cuerpo.dark-mode {
-    background-color: #061312; /* Color de fondo oscuro */
-    color: #ffffff; /* Color de texto oscuro */
+    background-color: #061312; 
+    color: #ffffff; 
   }
   
-  /* Estilos adicionales para otros elementos dentro de la sección 'cuerpo' */
+ 
   .cuerpo.dark-mode .checklist {
     background-color: #103a36; 
     color: #e0e0e0; 
   }
-
-  .cuerpo.dark-mode .checklist .task-text{
+  
+  .cuerpo.dark-mode .checklist .task-text {
     color: #5f5e5e;
   }
-  .cuerpo.dark-mode .checklist .edit-task-input{
+  
+  .cuerpo.dark-mode .checklist .edit-task-input {
     color: #5f5e5e;
   }
-  .cuerpo.dark-mode .checklist  .captusseccion{
+  
+  .cuerpo.dark-mode .checklist .captusseccion {
     background-color: #b2b9b8;
   }
+  
+  .cuerpo.dark-mode .checklist input[type="text"] {
+    color: #5f5e5e;
+  }
+  
+  

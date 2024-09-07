@@ -1,4 +1,3 @@
-// src/components/RouteProtection.tsx
 import React from 'react';
 import { Navigate} from 'react-router-dom';
 

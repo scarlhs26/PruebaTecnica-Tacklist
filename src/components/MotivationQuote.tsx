@@ -1,9 +1,7 @@
-// src/components/MotivationQuote.tsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 interface Quote {
-  // Define aquí los campos esperados en la respuesta de la API
   quote: string;
 }
 

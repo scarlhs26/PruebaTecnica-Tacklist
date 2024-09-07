@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-// Obtén el ID del usuario desde el localStorage o cualquier otro método de autenticación
 const getUserId = (): string | null => {
-  return localStorage.getItem('loggedInUser'); // Asegúrate de que este método obtenga el ID del usuario
+  return localStorage.getItem('loggedInUser'); 
 };
 
 const DarkModeToggle: React.FC = () => {
@@ -18,7 +17,6 @@ const DarkModeToggle: React.FC = () => {
 
   useEffect(() => {
     if (userId) {
-      // Seleccionar la sección 'cuerpo'
       const cuerpoElement = document.querySelector('.cuerpo');
       if (cuerpoElement) {
         // Aplicar o quitar la clase dark-mode
@@ -48,4 +46,3 @@ const DarkModeToggle: React.FC = () => {
 };
 
 export default DarkModeToggle;
-

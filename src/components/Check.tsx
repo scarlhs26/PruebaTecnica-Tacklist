@@ -99,7 +99,6 @@ export function Checklist() {
   const [editTaskId, setEditTaskId] = useState<number | null>(null);
   const [editTaskText, setEditTaskText] = useState<string>('');
 
-  // Obtener el correo electrónico del usuario logueado desde localStorage
   const loggedInUserEmail = localStorage.getItem('loggedInUser');
 
   // Cargar las tareas del usuario logueado al montar el componente

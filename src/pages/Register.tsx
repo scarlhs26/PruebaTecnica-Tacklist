@@ -67,7 +67,6 @@ export function Register() {
       // Guardar el usuario actual en localStorage
       localStorage.setItem('loggedInUser', JSON.stringify({ email, username }));
 
-      // Limpiar formulario
       setEmail('');
       setUsername('');
       setPassword('');
@@ -78,7 +77,6 @@ export function Register() {
     } catch (error) {
       setError('Error al registrar el usuario. Inténtalo de nuevo.');
 
-      // Limpiar mensaje de error después de 5 segundos
       setTimeout(() => setError(null), 5000);
     }
   };
@@ -135,7 +133,7 @@ export function Register() {
             {successMessage && <p className="text-green-500">{successMessage}</p>}
           </div>
           <p className="mt-4 text-center">
-            ¿Ya tienes una cuenta? <NavLink to="/">Login</NavLink>
+            ¿Ya tienes una cuenta? <NavLink className="font-bold text-[#103A36]" to="/">Login</NavLink>
           </p>
         </form>
       </div>
