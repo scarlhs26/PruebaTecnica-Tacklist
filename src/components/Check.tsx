@@ -57,11 +57,11 @@ const DraggableTask: React.FC<DraggableTaskProps> = ({
   return (
     <li
       ref={(node) => dragRef(dropRef(node))}
-      className={task.completed ? 'completed' : ''}
+      className={`flex items-center p-2 border-b border-gray-300 bg-gray-50 rounded-md transition-transform ${task.completed ? 'completed' : ''}`}
       style={{ opacity: isDragging ? 0.5 : 1 }}
     >
       <input
-      className='checkbox'
+        className='checkbox mr-3 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500'
         type="checkbox"
         checked={task.completed}
         onChange={() => toggleTaskCompletion(task.id)}
@@ -209,10 +209,10 @@ export function Checklist() {
           onKeyDown={handleKeyPress}
           placeholder="Añadir nueva tarea"
         />
-          <li onClick={addTask} className='lnir-plus absolute  right-[10px]  top-[7px]	text-[#051d05]  plus  '></li>
+        <li onClick={addTask} className='lnir-plus absolute right-[10px] top-[7px] text-[#051d05] plus'></li>
       </div>
       <button onClick={handleClearAllTasks} className="clear-button">
-      <i className='lnir-trash-can mb-2 text-lg	'></i>
+        <i className='lnir-trash-can mb-2 text-lg'></i>
       </button>
       <ul>
         {tasks.map((task, index) => (

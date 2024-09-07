@@ -62,13 +62,14 @@ export function Inicio() {
 
   return (
     <>
-      <section className="w-full	h-screen flex  justify-center	items-center		">
-        <div className="">
-          <h1 className="">Inicio de sesión</h1>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="email">Correo Electrónico:</label>
+      <section className="w-full	h-screen flex  justify-center	items-center bg-[#D5E4E1] 		">
+        <div className=" bg-[#ffffff] rounded-2xl	p-6 max-w-sm mx-auto  shadow-lg ">
+          <h1 className="text-3xl	text-center mb-4	">Inicio de sesión</h1>
+          <form onSubmit={handleSubmit} className="flex flex-col	items-center">
+            <div className="flex ">
               <input
+                placeholder="Correo electrónico"
+                className="bg-[#eee] border border-gray-200 rounded-lg px-4 py-3 my-2 w-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-gray-300"
                 type="email"
                 id="email"
                 value={email}
@@ -77,8 +78,9 @@ export function Inicio() {
               />
             </div>
             <div>
-              <label htmlFor="password">Contraseña:</label>
               <input
+                placeholder="Contraseña"
+                className="bg-[#eee] border border-gray-200 rounded-lg px-4 py-3 my-2 w-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-gray-300"
                 type="password"
                 id="password"
                 value={password}
@@ -86,12 +88,18 @@ export function Inicio() {
                 required
               />
             </div>
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {successMessage && (
-              <p style={{ color: "green" }}>{successMessage}</p>
-            )}
-            <button type="submit">Iniciar Sesión</button>
-            <p>¿Aun no tienes una cuenta? <a href="/register">Registrate</a></p>
+            
+
+            <button
+              className="w-40 mt-5 bg-[#103A36]  text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out hover:bg-[#1d635c]  focus:outline-none focus:ring-2 focus:bg-[#1d635c] "
+              type="submit"
+            >
+              Iniciar Sesión
+            </button>
+            <div className=" mt-2 w-60 text-center		text-[12px]	h-12">{error && <p style={{ color: "red" }}>{error}</p>}</div>
+            <p>
+              ¿Aun no tienes una cuenta? <a href="/register">Registrate</a>
+            </p>
           </form>
         </div>
       </section>
