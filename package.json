@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://scarlhs26.github.io/PruebaTecnica-Tacklist",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@types/react-beautiful-dnd": "^13.1.8",
@@ -40,5 +43,4 @@
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
   }
-  
 }
