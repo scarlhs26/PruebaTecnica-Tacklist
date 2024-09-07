@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ChecklistPage } from './pages/Checklist';
 import { Inicio } from './pages/Login';
 import { Register } from './pages/Register';
@@ -11,7 +11,7 @@ const root = createRoot(document.getElementById('root')!);
 
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Rutas Públicas */}
         <Route path="/" element={<PublicRoute element={<Inicio />} />} />
@@ -23,6 +23,6 @@ root.render(
         {/* Ruta de Redirección */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </StrictMode>
 );
