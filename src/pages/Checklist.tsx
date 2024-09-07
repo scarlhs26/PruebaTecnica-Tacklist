@@ -58,7 +58,7 @@ export function ChecklistPage() {
             ) : error ? (
               <p>{error}</p>
             ) : (
-              <p className="italic">{quote}</p>
+              <p className="italic md:w-1/2">{quote}</p>
             )}
           </div>
           <Checklist />

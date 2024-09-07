@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import '../styles/Generales.css';
+import Captus from '../img/captus2.png';
 
 interface Task {
   id: number;
@@ -200,6 +201,8 @@ export function Checklist() {
 
   return (
     <div className="checklist">
+      <div className='captusseccion bg-[#D5E4E1] rounded-full w-32 ml-24 h-32 relative'>   <img className=" w-32 ml-24 absolute right-[-10px]	" src={Captus} alt="Captus" />
+      </div>
       <h1 className='font-semibold text-sm mb-4 mt-2'>Vamos a cumplir tus metas:</h1>
       <div className="input-container relative">
         <input

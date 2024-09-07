@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Importar uuid para generar IDs únicos
 import * as bcrypt from 'bcryptjs';
 import { Navbar } from '../components/Navbar';
+import Captus from '../img/captus.png';
+
 
 export function Register() {
   const [email, setEmail] = useState<string>('');
@@ -83,44 +85,61 @@ export function Register() {
 
   return (
     <>
-      <Navbar />
-      <h1>Registro de Usuarios</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Correo Electrónico:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="username">Nombre de Usuario:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-        <button type="submit">Registrar</button>
-        <p>¿Ya tienes una cuenta? <a href="/">Inicia Sesion</a></p>
-      </form>
-    </>
+    <section className="w-full h-screen flex justify-center items-center bg-[#D5E4E1]">
+      <div className="bg-[#ffffff] rounded-2xl p-6 max-w-sm mx-auto shadow-lg">
+        <img className="p-4 w-32 ml-20" src={Captus} alt="Captus" />
+        <h1 className="text-3xl text-center mb-4">Registro de Usuarios</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center">
+          <div className="w-full">
+            <input
+              type="email"
+              id="email"
+              placeholder="Correo electrónico"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="bg-[#eee] border border-gray-200 rounded-lg px-4 py-3 my-2 w-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-gray-300"
+            />
+          </div>
+          <div className="w-full">
+            <input
+              type="text"
+              id="username"
+              placeholder="Nombre de Usuario"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className="bg-[#eee] border border-gray-200 rounded-lg px-4 py-3 my-2 w-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-gray-300"
+            />
+          </div>
+          <div className="w-full">
+            <input
+              type="password"
+              id="password"
+              placeholder="Contraseña"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="bg-[#eee] border border-gray-200 rounded-lg px-4 py-3 my-2 w-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-gray-300"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-40 mt-5 bg-[#103A36] text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out hover:bg-[#1d635c] focus:outline-none focus:ring-2 focus:ring-[#1d635c]"
+          >
+            Registrar
+          </button>
+          <div className="mt-2 w-60 text-center h-12">
+            {error && <p className="text-red-500">{error}</p>}
+            {successMessage && <p className="text-green-500">{successMessage}</p>}
+          </div>
+          <p className="mt-4 text-center">
+            ¿Ya tienes una cuenta? <a className="font-bold text-[#103A36]" href="/">Inicia Sesión</a>
+          </p>
+        </form>
+      </div>
+    </section>
+  </>
   );
 }

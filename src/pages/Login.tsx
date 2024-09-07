@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import * as bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 import "../styles/index.css";
+import Captus from '../img/captus.png';
 
 export function Inicio() {
   const [email, setEmail] = useState<string>("");
@@ -63,7 +64,9 @@ export function Inicio() {
   return (
     <>
       <section className="w-full	h-screen flex  justify-center	items-center bg-[#D5E4E1] 		">
+
         <div className=" bg-[#ffffff] rounded-2xl	p-6 max-w-sm mx-auto  shadow-lg ">
+        <img className="p-4 w-32		ml-20	" src={Captus} alt="Captus" />
           <h1 className="text-3xl	text-center mb-4	">Inicio de sesión</h1>
           <form onSubmit={handleSubmit} className="flex flex-col	items-center">
             <div className="flex ">
@@ -98,7 +101,7 @@ export function Inicio() {
             </button>
             <div className=" mt-2 w-60 text-center		text-[12px]	h-12">{error && <p style={{ color: "red" }}>{error}</p>}</div>
             <p>
-              ¿Aun no tienes una cuenta? <a href="/register">Registrate</a>
+              ¿Aún no tienes una cuenta? <a className="font-bold	" href="/register">Regístrate</a>
             </p>
           </form>
         </div>

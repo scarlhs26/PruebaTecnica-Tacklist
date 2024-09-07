@@ -14,6 +14,9 @@
 .li-press{
     background-color: rgb(187, 52, 52);
 }
+body{
+    background-color: #D5E4E1;
+}
 
 /*-----------CHECKLIST-----------------*/
 /* src/styles/Generales.css */
@@ -46,7 +49,7 @@
     padding: 8px;
     font-size: 16px;
     border: 1px solid #cfcece;
-    border-radius: 4px;
+    border-radius: 12px;
     width: 100%;
     transition: border-color 0.3s ease;
 }
@@ -199,4 +202,6 @@
   .cuerpo.dark-mode .checklist .edit-task-input{
     color: #5f5e5e;
   }
-  
+  .cuerpo.dark-mode .checklist  .captusseccion{
+    background-color: #b2b9b8;
+  }
