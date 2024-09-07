@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // Importar uuid para generar IDs únicos
 import * as bcrypt from 'bcryptjs';
 import Captus from '../img/captus.png';
+import {  NavLink } from "react-router-dom";
 
 
 export function Register() {
@@ -134,7 +135,7 @@ export function Register() {
             {successMessage && <p className="text-green-500">{successMessage}</p>}
           </div>
           <p className="mt-4 text-center">
-            ¿Ya tienes una cuenta? <a className="font-bold text-[#103A36]" href="/">Inicia Sesión</a>
+            ¿Ya tienes una cuenta? <NavLink to="/">Login</NavLink>
           </p>
         </form>
       </div>

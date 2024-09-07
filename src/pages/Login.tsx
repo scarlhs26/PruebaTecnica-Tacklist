@@ -1,6 +1,6 @@
 // src/pages/Inicio.tsx
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import * as bcrypt from "bcryptjs";
 import { v4 as uuidv4 } from "uuid";
 import "../styles/index.css";
@@ -102,7 +102,7 @@ export function Inicio() {
             <div className=" mt-2 w-60 text-center		text-[12px]	h-12">{error && <p style={{ color: "red" }}>{error}</p>}</div>
             <div className="mt-2 w-60 text-center	h-12">{successMessage && <p style={{ color: "green" }}>{successMessage}</p>}</div>
             <p>
-              ¿Aún no tienes una cuenta? <a className="font-bold	" href="/register">Regístrate</a>
+              ¿Aún no tienes una cuenta? <NavLink to="/register">Registrate</NavLink>
             </p>
           </form>
         </div>
