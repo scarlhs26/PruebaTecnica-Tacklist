@@ -147,7 +147,7 @@ body{
         transform: translateY(10px);
     }
 }
-@media (max-width: 380px){
+@media (max-width: 390px){
     .checklist{
         min-width: 360px;
     }
